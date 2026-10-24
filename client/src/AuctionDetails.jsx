@@ -4,8 +4,8 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./AuctionDetails.css";
 
-const API_URL = "http://localhost:5001/api";
-const SERVER_URL = "http://localhost:5001";
+const API_URL = "https://bid-sphere-backend-rgys.onrender.com/api";
+const SERVER_URL = "https://bid-sphere-backend-rgys.onrender.com";
 
 function AuctionDetails() {
   const { id } = useParams();
