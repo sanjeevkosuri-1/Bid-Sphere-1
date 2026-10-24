@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./AcceptedBids.css";
 
-const API_URL = "http://localhost:5001/api";
+const API_URL = "https://bid-sphere-backend-rgys.onrender.com/api";
 
 function AcceptedBids() {
   const [auctions, setAuctions] = useState([]);
