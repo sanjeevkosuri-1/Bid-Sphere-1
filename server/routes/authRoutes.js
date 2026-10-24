@@ -2,25 +2,18 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const { Resend } = require("resend");
 
 const User = require("../models/User");
 const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const OTP_EXPIRY_MS = 10 * 60 * 1000;
 const MAX_OTP_ATTEMPTS = 5;
-
-// Gmail transporter
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
 
 // Hash OTP before storing or comparing it.
 function hashOTP(otp) {
@@ -57,23 +50,32 @@ function safeUser(user) {
   };
 }
 
-// Send OTP by email.
+// Send OTP through Resend's HTTPS API.
 async function sendOTPEmail(email, otp, purpose) {
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+  if (!process.env.RESEND_API_KEY) {
     throw new Error(
-      "EMAIL_USER or EMAIL_PASS is missing in the environment"
+      "RESEND_API_KEY is missing in the environment"
     );
   }
 
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: email,
+  const { data, error } = await resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL ||
+      "BidSphere <onboarding@resend.dev>",
+    to: [email],
     subject:
       purpose === "verify"
         ? "BidSphere Email Verification"
         : "BidSphere Password Reset",
     text: `Your BidSphere OTP is ${otp}. It expires in 10 minutes. Do not share it with anyone.`,
   });
+
+  if (error) {
+    throw new Error(
+      error.message || "Resend email delivery failed"
+    );
+  }
+
+  return data;
 }
 
 // TEST ROUTE
@@ -146,7 +148,6 @@ router.post("/register", async (req, res) => {
       await User.findByIdAndDelete(user._id);
 
       console.error("Verification email error:", {
-        code: emailError.code,
         message: emailError.message,
       });
 
@@ -239,7 +240,8 @@ router.post("/verify-email", async (req, res) => {
     await user.save();
 
     return res.status(200).json({
-      message: "Email verified successfully. Please verify your phone number next.",
+      message:
+        "Email verified successfully. Please verify your phone number next.",
       emailVerified: true,
       requiresPhoneVerification: true,
     });
@@ -292,7 +294,6 @@ router.post("/resend-verification-otp", async (req, res) => {
       await sendOTPEmail(user.email, otp, "verify");
     } catch (emailError) {
       console.error("Resend verification email error:", {
-        code: emailError.code,
         message: emailError.message,
       });
 
@@ -316,7 +317,6 @@ router.post("/resend-verification-otp", async (req, res) => {
 // SEND PHONE OTP - DEVELOPMENT ONLY
 router.post("/send-phone-otp", async (req, res) => {
   try {
-    // Never expose simulated OTPs outside development.
     if (process.env.NODE_ENV !== "development") {
       return res.status(403).json({
         message:
@@ -453,7 +453,8 @@ router.post("/verify-phone-otp", async (req, res) => {
     await user.save();
 
     return res.status(200).json({
-      message: "Phone number verified successfully. You can now log in.",
+      message:
+        "Phone number verified successfully. You can now log in.",
       phoneVerified: true,
     });
   } catch (error) {
@@ -544,9 +545,9 @@ router.post("/forgot-password", async (req, res) => {
       });
     }
 
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    if (!process.env.RESEND_API_KEY) {
       console.error(
-        "Forgot password: Gmail environment variables are missing."
+        "Forgot password: RESEND_API_KEY is missing."
       );
 
       return res.status(500).json({
@@ -586,10 +587,7 @@ router.post("/forgot-password", async (req, res) => {
     try {
       await sendOTPEmail(user.email, otp, "reset");
     } catch (emailError) {
-      console.error("Gmail delivery failed:", {
-        code: emailError.code,
-        command: emailError.command,
-        responseCode: emailError.responseCode,
+      console.error("Resend delivery failed:", {
         message: emailError.message,
       });
 
@@ -607,7 +605,7 @@ router.post("/forgot-password", async (req, res) => {
 
     return res.status(500).json({
       message:
-        "Unable to process password reset. Check the backend terminal.",
+        "Unable to process password reset. Check the backend logs.",
     });
   }
 });
@@ -803,7 +801,6 @@ router.put("/profile", authMiddleware, async (req, res) => {
         });
       }
 
-      // Changing phone invalidates previous verification.
       if (user.phone !== phone.trim()) {
         user.phoneVerified = false;
         user.phoneOtpHash = null;
