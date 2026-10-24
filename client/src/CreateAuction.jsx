@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./CreateAuction.css";
 
-const API_URL = "http://localhost:5001/api";
+const API_URL = "https://bid-sphere-backend-rgys.onrender.com/api";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const MAX_FILES = 5;
