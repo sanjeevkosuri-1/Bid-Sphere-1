@@ -23,7 +23,7 @@ function MyBids() {
         }
 
         const response = await axios.get(
-          "http://localhost:5001/api/bids/my-bids",
+          "https://bid-sphere-backend-rgys.onrender.com/api/bids/my-bids",
           {
             headers: {
               Authorization: `Bearer ${token}`,
