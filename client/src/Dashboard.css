@@ -1,0 +1,355 @@
+
+/* ===== Main Layout ===== */
+.dashboard-container {
+  min-height: 100vh;
+  background: #f5f7f5;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2937;
+}
+
+/* ===== Top Navigation ===== */
+.dashboard-nav {
+  height: 72px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+}
+
+.dashboard-nav h2 {
+  margin: 0;
+  color: #166534;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.dashboard-home-link {
+  color: #374151;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dashboard-home-link:hover {
+  color: #15803d;
+}
+
+/* ===== Sidebar + Main Content ===== */
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - 72px);
+}
+
+/* ===== Left Sidebar ===== */
+.dashboard-sidebar {
+  width: 255px;
+  flex-shrink: 0;
+  padding: 28px 16px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 24px;
+  border-bottom: 1px solid #edf0ed;
+}
+
+.sidebar-avatar {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.sidebar-user h3 {
+  margin: 0 0 5px;
+  color: #1f2937;
+  font-size: 15px;
+}
+
+.sidebar-user p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.sidebar-heading {
+  margin: 28px 10px 12px;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 12px;
+  border-radius: 9px;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.sidebar-link.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.sidebar-icon {
+  display: inline-flex;
+  width: 22px;
+  justify-content: center;
+  font-size: 21px;
+  line-height: 1;
+}
+
+/* ===== Main Content ===== */
+.dashboard-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 38px;
+  box-sizing: border-box;
+}
+
+/* ===== Welcome Section ===== */
+.dashboard-welcome {
+  padding: 30px 32px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #14532d, #15803d);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(22, 101, 52, 0.12);
+}
+
+.welcome-label {
+  margin: 0 0 10px;
+  color: #bbf7d0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.dashboard-welcome h1 {
+  margin: 0 0 12px;
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.3;
+}
+
+.dashboard-welcome > p:last-child {
+  max-width: 650px;
+  margin: 0;
+  color: #e5f5e8;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ===== Center Create Bid Card ===== */
+.create-bid-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 12px;
+}
+
+.create-bid-card {
+  width: 100%;
+  max-width: 470px;
+  padding: 38px 32px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.create-bid-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+.create-bid-icon {
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  border-radius: 18px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 42px;
+  font-weight: 400;
+}
+
+.create-bid-card h2 {
+  margin: 0 0 12px;
+  color: #166534;
+  font-size: 27px;
+}
+
+.create-bid-card p {
+  margin: 0 auto 26px;
+  max-width: 360px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.create-bid-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 13px 25px;
+  border-radius: 9px;
+  background: #166534;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.create-bid-button:hover {
+  background: #14532d;
+}
+
+.create-bid-button span {
+  font-size: 19px;
+}
+
+/* ===== Footer ===== */
+.dashboard-footer {
+  padding: 18px 0 4px;
+  border-top: 1px solid #e5e7eb;
+  color: #9ca3af;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 900px) {
+  .dashboard-sidebar {
+    width: 220px;
+    padding: 24px 12px;
+  }
+
+  .dashboard-main {
+    padding: 25px;
+  }
+
+  .dashboard-welcome {
+    padding: 25px;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .dashboard-nav {
+    height: 64px;
+    padding: 0 18px;
+  }
+
+  .dashboard-nav h2 {
+    font-size: 22px;
+  }
+
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-sidebar {
+    width: 100%;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .sidebar-user {
+    padding-bottom: 15px;
+  }
+
+  .sidebar-heading {
+    margin-top: 18px;
+  }
+
+  .sidebar-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .sidebar-link {
+    padding: 12px 8px;
+    gap: 7px;
+    font-size: 12px;
+  }
+
+  .sidebar-icon {
+    width: 18px;
+    font-size: 18px;
+  }
+
+  .dashboard-main {
+    padding: 20px 15px;
+  }
+
+  .dashboard-welcome {
+    padding: 23px 20px;
+  }
+
+  .dashboard-welcome h1 {
+    font-size: 26px;
+  }
+
+  .dashboard-welcome > p:last-child {
+    font-size: 14px;
+  }
+
+  .create-bid-section {
+    padding: 30px 0;
+  }
+
+  .create-bid-card {
+    padding: 30px 20px;
+  }
+
+  .create-bid-card h2 {
+    font-size: 24px;
+  }
+}

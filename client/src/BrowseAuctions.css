@@ -1,0 +1,138 @@
+.browse-auctions-page {
+  min-height: 100vh;
+  background: #f5faf6;
+  color: #183b2a;
+  font-family: Arial, sans-serif;
+}
+
+.browse-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: white;
+  border-bottom: 1px solid #dce9df;
+}
+
+.browse-nav h2 {
+  color: #16834a;
+}
+
+.browse-nav a {
+  color: #16834a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.browse-content {
+  padding: 40px 8%;
+}
+
+.auction-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.auction-item {
+  padding: 24px;
+  background: white;
+  border: 1px solid #dce9df;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.auction-item h3 {
+  color: #16834a;
+  margin-top: 18px;
+}
+
+.auction-type {
+  display: inline-block;
+  padding: 6px 10px;
+  background: #e3f5e9;
+  color: #106738;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.auction-id {
+  color: #66756b;
+  font-size: 12px;
+}
+
+.browse-error {
+  color: #c62828;
+}
+
+@media (max-width: 600px) {
+  .browse-content {
+    padding: 28px 5%;
+  }
+
+  .browse-nav {
+    padding: 16px 5%;
+  }
+}
+
+.view-auction-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background-color: #198754;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.view-auction-button:hover {
+  background-color: #146c43;
+}
+
+.auction-search-section {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.auction-search-section input {
+  flex: 1;
+  min-width: 220px;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.auction-search-section input:focus {
+  border-color: #166534;
+  box-shadow: 0 0 0 2px rgba(22, 101, 52, 0.12);
+}
+
+.auction-search-section select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  font-size: 15px;
+}
+
+.auction-search-section button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #166534;
+  color: white;
+  cursor: pointer;
+}
+
+.auction-search-section button:hover {
+  background: #14532d;
+}
+

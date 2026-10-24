@@ -1,0 +1,107 @@
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: #f3f8f4;
+  font-family: Arial, sans-serif;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+.register-card h1 {
+  margin: 0 0 10px;
+  color: #187747;
+  text-align: center;
+}
+
+.register-card > p {
+  color: #5f6b63;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.register-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.register-card label {
+  color: #26372c;
+  font-weight: 600;
+}
+
+.register-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #cbd8ce;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+.register-card input:focus {
+  outline: 2px solid #238653;
+  outline-offset: 1px;
+}
+
+.register-card button {
+  margin-top: 10px;
+  padding: 13px;
+  border: none;
+  border-radius: 7px;
+  background: #187747;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register-card button:hover {
+  background: #125d36;
+}
+
+.register-error,
+.register-success {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.register-error {
+  color: #c62828 !important;
+}
+
+.register-success {
+  color: #187747 !important;
+}
+
+.register-card .register-footer {
+  margin-top: 22px;
+}
+
+.register-card a {
+  color: #187747;
+  font-weight: 600;
+}
+
+.register-home {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .register-card {
+    padding: 22px;
+  }
+}
