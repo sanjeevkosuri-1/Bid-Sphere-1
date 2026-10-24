@@ -18,7 +18,7 @@ function BrowseAuctions() {
         setError("");
 
         const response = await axios.get(
-          "http://localhost:5001/api/auctions"
+         "https://bid-sphere-backend-rgys.onrender.com/api/auctions"
         );
 
         const auctionData = Array.isArray(response.data)
