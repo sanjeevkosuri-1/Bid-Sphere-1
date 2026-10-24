@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Register.css";
 
-const API_URL = "http://localhost:5001/api/auth";
+const API_URL = "https://bid-sphere-backend-rgys.onrender.com/api/auth";
 
 function Register() {
   const navigate = useNavigate();
