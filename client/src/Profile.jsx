@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Profile.css";
-
-const API_URL = "http://localhost:5001/api/auth/profile";
+const API_URL = "https://bid-sphere-backend-rgys.onrender.com/api/auth/profile";
 
 const emptyProfile = {
   fullName: "",
