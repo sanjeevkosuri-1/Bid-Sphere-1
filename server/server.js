@@ -39,7 +39,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/bids", bidRoutes);
 
 // Start server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT||5001;
 
 const startServer = async () => {
   try {
