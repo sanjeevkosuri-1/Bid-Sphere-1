@@ -24,7 +24,7 @@ function MyAuctions() {
         }
 
         const response = await axios.get(
-          "http://localhost:5001/api/auctions/my-auctions",
+          "https://bid-sphere-backend-rgys.onrender.com/api/auctions/my-auctions",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ function MyAuctions() {
       }
 
       await axios.delete(
-        `http://localhost:5001/api/auctions/${auctionId}`,
+        `https://bid-sphere-backend-rgys.onrender.com/api/auctions/${auctionId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
