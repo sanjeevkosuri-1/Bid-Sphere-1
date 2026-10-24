@@ -15,7 +15,7 @@ function ForgotPassword() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const API = "http://localhost:5001/api/auth";
+const API = "https://bid-sphere-backend-rgys.onrender.com/api/auth";
 
   // Step 1: Send OTP
   const handleSendOtp = async (event) => {
